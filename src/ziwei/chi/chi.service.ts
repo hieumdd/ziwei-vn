@@ -1,9 +1,7 @@
 import { Chi } from './chi.type';
 import * as Chis from './chi.enum';
 
-const ChiCollection = Object.values(Chis);
-
-export const getChiYear = (year: number) => {
+export const getYearChi = (year: number) => {
     const order = [
         Chis.Than,
         Chis.Dau,
@@ -22,6 +20,6 @@ export const getChiYear = (year: number) => {
     return order[year % 12] as Chi;
 };
 
-export const getChiMonth = (month: number) => {
+export const getMonthChi = (month: number) => {
     return Object.values(Chis).find(({ lunarMonth }) => lunarMonth === month) as Chi;
 };
