@@ -5,5 +5,9 @@
     ],
     "compilerOptions": {
         "sourceMap": true,
+        "types": [
+            "jest",
+            "./node_modules/date-chinese/types"
+        ]
     }
 }
