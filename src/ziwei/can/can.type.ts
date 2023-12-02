@@ -5,4 +5,5 @@ export type Can = {
     name: string;
     amDuong: AmDuong;
     nguHanh: NguHanh;
+    menhRank: number;
 };
