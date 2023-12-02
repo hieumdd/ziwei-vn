@@ -20,8 +20,8 @@ export const getChiYear = (year: number) => {
     ];
 
     return order[year % 12] as Chi;
-}
+};
 
 export const getChiMonth = (month: number) => {
-    return Object.values(Chis).find(({lunarMonth}) => lunarMonth === month) as Chi;
-}
+    return Object.values(Chis).find(({ lunarMonth }) => lunarMonth === month) as Chi;
+};
