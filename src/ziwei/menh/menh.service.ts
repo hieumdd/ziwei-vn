@@ -8,5 +8,5 @@ type GetMenhOptions = { can: Can; chi: Chi };
 export const getMenh = ({ can, chi }: GetMenhOptions) => {
     const order = [NguHanhs.Kim, NguHanhs.Thuy, NguHanhs.Hoa, NguHanhs.Tho, NguHanhs.Moc];
 
-    return order[(can.menhRank + chi.menhRank) % 5] as NguHanh;
+    return order[((can.menhRank + chi.menhRank) % 5) - 1] as NguHanh;
 };
