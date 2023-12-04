@@ -2,6 +2,7 @@ import { Chi } from './chi.type';
 import { AmDuong } from '../am-duong.enum';
 
 export const Ty: Chi = {
+    index: 0,
     name: 'Tý',
     amDuong: AmDuong.Duong,
     lunarMonth: 11,
@@ -11,6 +12,7 @@ export const Ty: Chi = {
 };
 
 export const Suu: Chi = {
+    index: 1,
     name: 'Sửu',
     amDuong: AmDuong.Am,
     lunarMonth: 12,
@@ -20,6 +22,7 @@ export const Suu: Chi = {
 };
 
 export const Dan: Chi = {
+    index: 2,
     name: 'Dần',
     amDuong: AmDuong.Duong,
     lunarMonth: 1,
@@ -29,6 +32,7 @@ export const Dan: Chi = {
 };
 
 export const Mao: Chi = {
+    index: 3,
     name: 'Mão',
     amDuong: AmDuong.Am,
     lunarMonth: 2,
@@ -38,6 +42,7 @@ export const Mao: Chi = {
 };
 
 export const Thin: Chi = {
+    index: 4,
     name: 'Thìn',
     amDuong: AmDuong.Duong,
     lunarMonth: 3,
@@ -47,6 +52,7 @@ export const Thin: Chi = {
 };
 
 export const Ti: Chi = {
+    index: 5,
     name: 'Tị',
     amDuong: AmDuong.Am,
     lunarMonth: 4,
@@ -56,6 +62,7 @@ export const Ti: Chi = {
 };
 
 export const Ngo: Chi = {
+    index: 6,
     name: 'Ngọ',
     amDuong: AmDuong.Duong,
     lunarMonth: 5,
@@ -65,6 +72,7 @@ export const Ngo: Chi = {
 };
 
 export const Mui: Chi = {
+    index: 7,
     name: 'Mùi',
     amDuong: AmDuong.Am,
     lunarMonth: 6,
@@ -74,6 +82,7 @@ export const Mui: Chi = {
 };
 
 export const Than: Chi = {
+    index: 8,
     name: 'Thân',
     amDuong: AmDuong.Duong,
     lunarMonth: 7,
@@ -83,6 +92,7 @@ export const Than: Chi = {
 };
 
 export const Dau: Chi = {
+    index: 9,
     name: 'Dậu',
     amDuong: AmDuong.Am,
     lunarMonth: 8,
@@ -92,6 +102,7 @@ export const Dau: Chi = {
 };
 
 export const Tuat: Chi = {
+    index: 10,
     name: 'Tuất',
     amDuong: AmDuong.Duong,
     lunarMonth: 9,
@@ -101,6 +112,7 @@ export const Tuat: Chi = {
 };
 
 export const Hoi: Chi = {
+    index: 11,
     name: 'Hợi',
     amDuong: AmDuong.Duong,
     lunarMonth: 10,
