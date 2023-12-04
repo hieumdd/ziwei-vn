@@ -8,7 +8,6 @@ export const Ty: Chi = {
     lunarMonth: 11,
     lunarHourStart: 23,
     lunarHourEnd: 1,
-    menhRank: 0,
 };
 
 export const Suu: Chi = {
@@ -18,7 +17,6 @@ export const Suu: Chi = {
     lunarMonth: 12,
     lunarHourStart: 1,
     lunarHourEnd: 3,
-    menhRank: 0,
 };
 
 export const Dan: Chi = {
@@ -28,7 +26,6 @@ export const Dan: Chi = {
     lunarMonth: 1,
     lunarHourStart: 3,
     lunarHourEnd: 5,
-    menhRank: 1,
 };
 
 export const Mao: Chi = {
@@ -38,7 +35,6 @@ export const Mao: Chi = {
     lunarMonth: 2,
     lunarHourStart: 5,
     lunarHourEnd: 7,
-    menhRank: 1,
 };
 
 export const Thin: Chi = {
@@ -48,7 +44,6 @@ export const Thin: Chi = {
     lunarMonth: 3,
     lunarHourStart: 7,
     lunarHourEnd: 9,
-    menhRank: 2,
 };
 
 export const Ti: Chi = {
@@ -58,7 +53,6 @@ export const Ti: Chi = {
     lunarMonth: 4,
     lunarHourStart: 9,
     lunarHourEnd: 11,
-    menhRank: 2,
 };
 
 export const Ngo: Chi = {
@@ -68,7 +62,6 @@ export const Ngo: Chi = {
     lunarMonth: 5,
     lunarHourStart: 11,
     lunarHourEnd: 13,
-    menhRank: 0,
 };
 
 export const Mui: Chi = {
@@ -78,7 +71,6 @@ export const Mui: Chi = {
     lunarMonth: 6,
     lunarHourStart: 13,
     lunarHourEnd: 15,
-    menhRank: 0,
 };
 
 export const Than: Chi = {
@@ -88,7 +80,6 @@ export const Than: Chi = {
     lunarMonth: 7,
     lunarHourStart: 15,
     lunarHourEnd: 17,
-    menhRank: 1,
 };
 
 export const Dau: Chi = {
@@ -98,7 +89,6 @@ export const Dau: Chi = {
     lunarMonth: 8,
     lunarHourStart: 17,
     lunarHourEnd: 19,
-    menhRank: 1,
 };
 
 export const Tuat: Chi = {
@@ -108,7 +98,6 @@ export const Tuat: Chi = {
     lunarMonth: 9,
     lunarHourStart: 19,
     lunarHourEnd: 21,
-    menhRank: 2,
 };
 
 export const Hoi: Chi = {
@@ -118,5 +107,4 @@ export const Hoi: Chi = {
     lunarMonth: 10,
     lunarHourStart: 21,
     lunarHourEnd: 23,
-    menhRank: 2,
 };

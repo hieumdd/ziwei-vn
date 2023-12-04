@@ -7,5 +7,4 @@ export type Chi = {
     lunarMonth: number;
     lunarHourStart: number;
     lunarHourEnd: number;
-    menhRank: number;
 };
