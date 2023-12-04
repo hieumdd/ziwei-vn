@@ -1,19 +1,8 @@
+import rotate from 'rotate-array';
+
 import { Can } from './can.type';
-import * as Cans from './can.enum';
+import { CanTuple } from './can.tuple';
 
 export const getYearCan = (year: number) => {
-    const order = [
-        Cans.Canh,
-        Cans.Tan,
-        Cans.Nham,
-        Cans.Quy,
-        Cans.Giap,
-        Cans.At,
-        Cans.Binh,
-        Cans.Dinh,
-        Cans.Mau,
-        Cans.Ky,
-    ];
-
-    return order[year % 10] as Can;
+    return rotate([...CanTuple], -4)[year % 10] as Can;
 };
