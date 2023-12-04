@@ -1,12 +1,7 @@
 import * as Chis from '../chi/chi.enum';
 
-type GetDiaChiOptions = {
-    lunarMonth: number;
-    lunarHour: number;
-};
-
-export const getDiaChi = (options: GetDiaChiOptions) => {
-    const baseDiaChi = [
+export const getBaseDiaChi = () => {
+    return [
         { name: Chis.Ty.name },
         { name: Chis.Suu.name },
         { name: Chis.Dan.name },
@@ -20,17 +15,19 @@ export const getDiaChi = (options: GetDiaChiOptions) => {
         { name: Chis.Tuat.name },
         { name: Chis.Hoi.name },
     ] as const;
+};
 
-    const withMenhThan = ((diaChi) => {
-        const menhIndex = 2 + (options.lunarMonth - 1) - (options.lunarHour - 1);
-        const thanIndex = 2 + (options.lunarMonth - 1) + (options.lunarHour - 1);
+type GetDiaChiOptions = {
+    lunarMonth: number;
+    lunarHour: number;
+};
 
-        return diaChi.map((cung, i) => ({
-            ...cung,
-            isMenh: i === menhIndex || i === diaChi.length + menhIndex,
-            isThan: i === thanIndex % diaChi.length,
-        }));
-    })(baseDiaChi);
+export const getMenhThanPredicate = (options: GetDiaChiOptions) => {
+    const menhIndex = 2 + (options.lunarMonth - 1) - (options.lunarHour - 1);
+    const thanIndex = 2 + (options.lunarMonth - 1) + (options.lunarHour - 1);
 
-    withMenhThan;
+    return {
+        isMenh: (i: number) => i === menhIndex || i === getBaseDiaChi().length + menhIndex,
+        isThan: (i: number) => i === thanIndex % getBaseDiaChi().length,
+    };
 };
