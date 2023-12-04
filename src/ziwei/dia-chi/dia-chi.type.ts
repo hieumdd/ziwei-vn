@@ -1,5 +1,5 @@
 import { Cung } from '../cung/cung.type';
-import * as Chis from '../chi/chi.enum';
+import * as Chis from '../chi/chi.const';
 
 export type DiaChi = [
     Cung<typeof Chis.Ty>,

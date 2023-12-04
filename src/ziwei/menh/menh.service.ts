@@ -3,7 +3,7 @@ import { chain } from 'lodash';
 import { Can } from '../can/can.type';
 import * as Cans from '../can/can.const';
 import { Chi } from '../chi/chi.type';
-import * as Chis from '../chi/chi.enum';
+import * as Chis from '../chi/chi.const';
 import { NguHanh } from '../ngu-hanh/ngu-hanh.type';
 import * as NguHanhs from '../ngu-hanh/ngu-hanh.enum';
 

@@ -1,25 +1,12 @@
+import rotate from 'rotate-array';
+
 import { Chi } from './chi.type';
-import * as Chis from './chi.enum';
+import { ChiTuple } from './chi.tuple';
 
 export const getYearChi = (year: number) => {
-    const order = [
-        Chis.Than,
-        Chis.Dau,
-        Chis.Tuat,
-        Chis.Hoi,
-        Chis.Ty,
-        Chis.Suu,
-        Chis.Dan,
-        Chis.Mao,
-        Chis.Thin,
-        Chis.Ti,
-        Chis.Ngo,
-        Chis.Mui,
-    ];
-
-    return order[year % 12] as Chi;
+    return rotate([...ChiTuple], -4)[year % 12] as Chi;
 };
 
 export const getMonthChi = (month: number) => {
-    return Object.values(Chis).find(({ lunarMonth }) => lunarMonth === month) as Chi;
+    return ChiTuple.find(({ lunarMonth }) => lunarMonth === month) as Chi;
 };

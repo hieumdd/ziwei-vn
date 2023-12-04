@@ -1,20 +1,7 @@
-import * as Chis from '../chi/chi.enum';
+import { ChiTuple } from '../chi/chi.tuple';
 
 export const getBaseDiaChi = () => {
-    return [
-        { name: Chis.Ty.name },
-        { name: Chis.Suu.name },
-        { name: Chis.Dan.name },
-        { name: Chis.Mao.name },
-        { name: Chis.Thin.name },
-        { name: Chis.Ti.name },
-        { name: Chis.Ngo.name },
-        { name: Chis.Mui.name },
-        { name: Chis.Than.name },
-        { name: Chis.Dau.name },
-        { name: Chis.Tuat.name },
-        { name: Chis.Hoi.name },
-    ] as const;
+    return ChiTuple.map(({ name }) => ({ name }));
 };
 
 type GetDiaChiOptions = {

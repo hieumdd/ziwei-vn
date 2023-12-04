@@ -1,13 +1,9 @@
 import { DateTime } from 'luxon';
 import { CalendarChinese } from 'date-chinese';
 
-import * as Chis from '../chi/chi.enum';
 import { getYearCan } from '../can/can.service';
-import { Chi } from '../chi/chi.type';
 import { getYearChi } from '../chi/chi.service';
 import { getMenh } from '../menh/menh.service';
-import { Cung } from '../cung/cung.type';
-import { LaSo } from './la-so.type';
 import { getBaseDiaChi, getMenhThanPredicate } from '../dia-chi/dia-chi.service';
 
 const getLunarDate = (datetime: DateTime) => {
