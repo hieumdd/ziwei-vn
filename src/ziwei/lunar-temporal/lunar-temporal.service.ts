@@ -23,8 +23,8 @@ type GetLunarMonth = (options: { lunarMonth: number; yearCan: Can }) => LunarTem
 
 export const getLunarMonth: GetLunarMonth = ({ lunarMonth, yearCan }) => {
     const [canRotation] = chain(CanTuple)
-        .chunk(2)
-        .flatMap((chunk, i, arr) => chunk.map((canValue) => [-2 * (arr.length - i - 1), canValue] as const))
+        .chunk(5)
+        .flatMap((chunk) => chunk.map((canValue, i, arr) => [-2 * (arr.length - i - 1), canValue] as const))
         .find(([_, x]) => x.index === yearCan.index)
         .value() as [number, Can];
 
