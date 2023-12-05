@@ -8,7 +8,7 @@ import { getCuc } from '../cuc/cuc.service';
 import {
     getBaseDiaChi,
     getChinhTinhAssigners,
-    getMenhThanPredicate,
+    getMenhThanAssigner,
     getThaiTueAssigners,
 } from '../dia-chi/dia-chi.service';
 
@@ -31,12 +31,12 @@ export const createLaSo = (gregorianDateString: string) => {
     const cuc = getCuc({ can: lunarYear.can, chi: lunarYear.chi });
 
     const diaChi = (() => {
-        const { isMenh, isThan } = getMenhThanPredicate({ lunarMonth: lunarDate.month, lunarHour: 12 });
+        const { assignMenh, assignThan } = getMenhThanAssigner({ lunarMonth: lunarDate.month, lunarHour: 12 });
         const chinhTinhAssigners = getChinhTinhAssigners({ cuc, lunarDay: lunarDate.day });
         const thaiTueAssigners = getThaiTueAssigners({ chi: lunarYear.chi });
 
         return getBaseDiaChi()
-            .map((cung, i) => ({ ...cung, isMenh: isMenh(i), isThan: isThan(i) }))
+            .map((cung, i) => ({ ...cung, isMenh: assignMenh(i), isThan: assignThan(i) }))
             .map((cung, i) => ({
                 ...cung,
                 chinhTinh: chinhTinhAssigners.filter(([_, assigner]) => assigner(i)).map(([sao]) => sao),

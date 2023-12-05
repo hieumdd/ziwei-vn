@@ -1,3 +1,4 @@
+import { Chi } from '../chi/chi.type';
 import * as Chis from '../chi/chi.const';
 import { ChiTuple } from '../chi/chi.tuple';
 import { Cuc } from '../cuc/cuc.type';
@@ -5,29 +6,28 @@ import { Sao } from '../sao/sao.type';
 import * as SaoChinhTinhs from '../sao/chinh-tinh.const';
 import * as SaoPhuTinhs from '../sao/phu-tinh.const';
 import { neutralize } from '../ziwei.utils';
-import { Chi } from '../chi/chi.type';
-
-type Assigner = (i: number) => boolean;
 
 export const getBaseDiaChi = () => {
     return ChiTuple.map(({ name }) => ({ name }));
 };
 
-type GetDiaChiOptions = { lunarMonth: number; lunarHour: number };
+type Assigner = (i: number) => boolean;
 
-export const getMenhThanPredicate = (options: GetDiaChiOptions): { [key: string]: Assigner } => {
+type GetDiaChiOptions = (options: { lunarMonth: number; lunarHour: number }) => { [key: string]: Assigner };
+
+export const getMenhThanAssigner: GetDiaChiOptions = (options) => {
     const menhIndex = 2 + (options.lunarMonth - 1) - (options.lunarHour - 1);
     const thanIndex = 2 + (options.lunarMonth - 1) + (options.lunarHour - 1);
 
     return {
-        isMenh: (i) => i === neutralize(menhIndex, ChiTuple.length),
-        isThan: (i) => i === neutralize(thanIndex, ChiTuple.length),
+        assignMenh: (i) => i === neutralize(menhIndex, ChiTuple.length),
+        assignThan: (i) => i === neutralize(thanIndex, ChiTuple.length),
     };
 };
 
-type GetChinhTinhAssigner = { cuc: Cuc; lunarDay: number };
+type GetChinhTinhAssigners = (options: { cuc: Cuc; lunarDay: number }) => [Sao, Assigner][];
 
-export const getChinhTinhAssigners = ({ cuc, lunarDay }: GetChinhTinhAssigner): [Sao, Assigner][] => {
+export const getChinhTinhAssigners: GetChinhTinhAssigners = ({ cuc, lunarDay }) => {
     const tuViIndex = cuc.tuViMapping.findIndex((values) => values.includes(lunarDay))!;
     const thienPhuIndex = neutralize(2 * Chis.Dan.index - tuViIndex, ChiTuple.length);
 
