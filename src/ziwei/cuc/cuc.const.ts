@@ -13,16 +13,16 @@ export const HoaLucCuc: Cuc = {
     rank: 6,
 };
 
-export const MocTamCuc: Cuc = {
-    name: 'Mộc Tam Cục',
-    nguHanh: NguHanhs.Moc,
-    rank: 3,
-};
-
 export const ThoNguCuc: Cuc = {
     name: 'Thổ Ngũ Cục',
     nguHanh: NguHanhs.Tho,
     rank: 5,
+};
+
+export const MocTamCuc: Cuc = {
+    name: 'Mộc Tam Cục',
+    nguHanh: NguHanhs.Moc,
+    rank: 3,
 };
 
 export const KimTuCuc: Cuc = {
