@@ -25,33 +25,33 @@ export const ThienCo: Sao = {
 };
 
 export const ThienPhu: Sao = {
-    name: 'Thiên Phủ'
-}
+    name: 'Thiên Phủ',
+};
 
 export const ThaiAm: Sao = {
-    name: 'Thái Âm'
-}
+    name: 'Thái Âm',
+};
 
 export const ThamLang: Sao = {
-    name: 'Tham Lang'
-}
+    name: 'Tham Lang',
+};
 
 export const CuMon: Sao = {
-    name: 'Cự Môn'
-}
+    name: 'Cự Môn',
+};
 
 export const ThienTuong: Sao = {
-    name: 'Thiên Tướng'
-}
+    name: 'Thiên Tướng',
+};
 
 export const ThienLuong: Sao = {
-    name: 'Thiên Lương'
-}
+    name: 'Thiên Lương',
+};
 
 export const ThatSat: Sao = {
-    name: 'Thất Sát'
-}
+    name: 'Thất Sát',
+};
 
 export const PhaQuan: Sao = {
-    name: 'Phá Quân'
-}
+    name: 'Phá Quân',
+};
