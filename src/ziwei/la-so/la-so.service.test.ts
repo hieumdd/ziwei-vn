@@ -1,3 +1,4 @@
+import { Gender } from '../gender.const';
 import { createLaSo } from './la-so.service';
 
 describe('createLaSo', () => {
@@ -7,6 +8,7 @@ describe('createLaSo', () => {
         laSo = createLaSo({
             gregorianDate: '1998-10-31',
             hour: 21,
+            gender: Gender.Nam,
         });
     });
 

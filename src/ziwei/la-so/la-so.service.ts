@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { CalendarChinese } from 'date-chinese';
 
+import { Gender } from '../gender.const';
 import { getMenh } from '../menh/menh.service';
 import { getCuc } from '../cuc/cuc.service';
 import {
@@ -14,7 +15,9 @@ import { getLunarDay, getLunarHour, getLunarMonth, getLunarYear } from '../lunar
 type CreateLaSoOptions = {
     gregorianDate: string;
     hour: number;
+    gender: Gender;
 };
+
 export const createLaSo = ({ gregorianDate: gregorianDateString, hour }: CreateLaSoOptions) => {
     const gregorianDate = DateTime.fromISO(gregorianDateString);
     const lunarDateValues = (() => {
