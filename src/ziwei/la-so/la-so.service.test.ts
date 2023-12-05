@@ -19,4 +19,7 @@ it('createLaSo', () => {
     expect(laSo.diaChi[7].chinhTinh).toContainEqual({ name: 'Tử Vi' });
     expect(laSo.diaChi[7].chinhTinh).toContainEqual({ name: 'Phá Quân' });
     expect(laSo.diaChi[9].chinhTinh).toContainEqual({ name: 'Thiên Phủ' });
+
+    expect(laSo.diaChi[0].phuTinh).toContainEqual({ name: 'Điếu Khách' });
+    expect(laSo.diaChi[2].phuTinh).toContainEqual({ name: 'Thái Tuế' });
 });
