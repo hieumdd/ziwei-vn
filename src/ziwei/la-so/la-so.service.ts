@@ -1,8 +1,6 @@
 import { DateTime } from 'luxon';
 import { CalendarChinese } from 'date-chinese';
 
-import { getYearCan } from '../can/can.service';
-import { getYearChi } from '../chi/chi.service';
 import { getMenh } from '../menh/menh.service';
 import { getCuc } from '../cuc/cuc.service';
 import {
@@ -11,26 +9,28 @@ import {
     getMenhThanAssigner,
     getThaiTueAssigners,
 } from '../dia-chi/dia-chi.service';
+import { getLunarDay, getLunarHour, getLunarMonth, getLunarYear } from '../lunar-temporal/lunar-temporal.service';
 
 export const createLaSo = (gregorianDateString: string) => {
     const gregorianDate = DateTime.fromISO(gregorianDateString);
-    const lunarDate = (() => {
+    const lunarDateValues = (() => {
         const date = new CalendarChinese().fromDate(gregorianDate.toJSDate());
         const [_, year, month, __, day] = date.get();
 
-        return { date: date, year, month, day };
+        return { year, month, day };
     })();
 
-    const lunarYear = {
-        can: getYearCan(gregorianDate.year),
-        chi: getYearChi(gregorianDate.year),
-    };
+    const lunarYear = getLunarYear({ gregorianYear: gregorianDate.year });
+    const lunarMonth = getLunarMonth({ lunarMonth: lunarDateValues.month, yearCan: lunarYear.can });
+    const lunarDay = getLunarDay({ gregorianDate, lunarDay: lunarDateValues.day });
+    const lunarHour = getLunarHour({ gregorianHour: 21, dayCan: lunarDay.can });
+
     const menh = getMenh({ can: lunarYear.can, chi: lunarYear.chi });
     const cuc = getCuc({ can: lunarYear.can, chi: lunarYear.chi });
 
     const diaChi = (() => {
-        const { assignMenh, assignThan } = getMenhThanAssigner({ lunarMonth: lunarDate.month, lunarHour: 12 });
-        const chinhTinhAssigners = getChinhTinhAssigners({ cuc, lunarDay: lunarDate.day });
+        const { assignMenh, assignThan } = getMenhThanAssigner({ lunarMonth: lunarDateValues.month, lunarHour: 12 });
+        const chinhTinhAssigners = getChinhTinhAssigners({ cuc, lunarDay: lunarDateValues.day });
         const thaiTueAssigners = getThaiTueAssigners({ chi: lunarYear.chi });
 
         return getBaseDiaChi()
@@ -44,8 +44,11 @@ export const createLaSo = (gregorianDateString: string) => {
 
     return {
         gregorianDate,
-        lunarDate,
+        lunarDateValues,
         lunarYear,
+        lunarMonth,
+        lunarDay,
+        lunarHour,
         menh,
         cuc,
         diaChi,
