@@ -134,7 +134,7 @@ export const getThaiTueAssigners: GetThaiTueAssigners = ({ chi: { index: thaiTue
         [SaoThaiTues.ThieuDuong, (i) => i === neutralize(thaiTueIndex + 1, ChiTuple.length)],
         [SaoThaiTues.TangMon, (i) => i === neutralize(thaiTueIndex + 2, ChiTuple.length)],
         [SaoThaiTues.ThieuAm, (i) => i === neutralize(thaiTueIndex + 3, ChiTuple.length)],
-        [SaoThaiTues.QuanPhuf, (i) => i === neutralize(thaiTueIndex + 4, ChiTuple.length)],
+        [SaoThaiTues.QuanPhu, (i) => i === neutralize(thaiTueIndex + 4, ChiTuple.length)],
         [SaoThaiTues.TuPhu, (i) => i === neutralize(thaiTueIndex + 5, ChiTuple.length)],
         [SaoThaiTues.TuePha, (i) => i === neutralize(thaiTueIndex + 6, ChiTuple.length)],
         [SaoThaiTues.LongDuc, (i) => i === neutralize(thaiTueIndex + 7, ChiTuple.length)],

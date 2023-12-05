@@ -16,7 +16,7 @@ export const ThieuAm: Sao = {
     name: 'Thiếu Âm',
 };
 
-export const QuanPhuf: Sao = {
+export const QuanPhu: Sao = {
     name: 'Quan Phù',
 };
 
