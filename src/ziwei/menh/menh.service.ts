@@ -4,8 +4,8 @@ import { Can } from '../can/can.type';
 import { CanTuple } from '../can/can.tuple';
 import { Chi } from '../chi/chi.type';
 import { ChiTuple } from '../chi/chi.tuple';
-import { NguHanh } from '../ngu-hanh/ngu-hanh.type';
 import * as NguHanhs from '../ngu-hanh/ngu-hanh.enum';
+import { neutralize } from '../ziwei.utils';
 
 export const getMenh = ({ can, chi }: { can: Can; chi: Chi }) => {
     const [canRank] = chain(CanTuple)
@@ -22,5 +22,5 @@ export const getMenh = ({ can, chi }: { can: Can; chi: Chi }) => {
 
     const nguHanhOrder = [NguHanhs.Kim, NguHanhs.Thuy, NguHanhs.Hoa, NguHanhs.Tho, NguHanhs.Moc];
 
-    return nguHanhOrder[((canRank + chiRank) % 5) - 1] as NguHanh;
+    return nguHanhOrder[neutralize(canRank + chiRank, 5) - 1];
 };

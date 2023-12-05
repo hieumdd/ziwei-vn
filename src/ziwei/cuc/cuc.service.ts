@@ -4,6 +4,7 @@ import * as Cucs from './cuc.const';
 import { Can } from '../can/can.type';
 import { Chi } from '../chi/chi.type';
 import * as Chis from '../chi/chi.const';
+import { neutralize } from '../ziwei.utils';
 
 export const getCuc = ({ can, chi }: { can: Can; chi: Chi }) => {
     let rotation = 0;
@@ -23,5 +24,5 @@ export const getCuc = ({ can, chi }: { can: Can; chi: Chi }) => {
         rotation = 4;
     }
 
-    return rotate([...cucTuple], rotation)[can.index % 5];
+    return rotate([...cucTuple], rotation)[neutralize(can.index, 5)];
 };

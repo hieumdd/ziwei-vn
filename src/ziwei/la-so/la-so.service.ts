@@ -5,7 +5,6 @@ import { getYearCan } from '../can/can.service';
 import { getYearChi } from '../chi/chi.service';
 import { getMenh } from '../menh/menh.service';
 import { getCuc } from '../cuc/cuc.service';
-import { Sao } from '../sao/sao.type';
 import { getBaseDiaChi, getChinhTinhAssigners, getMenhThanPredicate } from '../dia-chi/dia-chi.service';
 
 const getLunarDate = (datetime: DateTime) => {

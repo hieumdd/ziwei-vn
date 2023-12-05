@@ -11,18 +11,15 @@ export const getBaseDiaChi = () => {
     return ChiTuple.map(({ name }) => ({ name }));
 };
 
-type GetDiaChiOptions = {
-    lunarMonth: number;
-    lunarHour: number;
-};
+type GetDiaChiOptions = { lunarMonth: number; lunarHour: number };
 
 export const getMenhThanPredicate = (options: GetDiaChiOptions): { [key: string]: Assigner } => {
     const menhIndex = 2 + (options.lunarMonth - 1) - (options.lunarHour - 1);
     const thanIndex = 2 + (options.lunarMonth - 1) + (options.lunarHour - 1);
 
     return {
-        isMenh: (i) => i === menhIndex || i === ChiTuple.length + menhIndex,
-        isThan: (i) => i === thanIndex % ChiTuple.length,
+        isMenh: (i) => i === neutralize(menhIndex, ChiTuple.length),
+        isThan: (i) => i === neutralize(thanIndex, ChiTuple.length),
     };
 };
 
