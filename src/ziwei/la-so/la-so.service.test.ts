@@ -4,7 +4,10 @@ describe('createLaSo', () => {
     let laSo: ReturnType<typeof createLaSo>;
 
     beforeAll(() => {
-        laSo = createLaSo('1998-10-31');
+        laSo = createLaSo({
+            gregorianDate: '1998-10-31',
+            hour: 21,
+        });
     });
 
     describe('thien-ban', () => {

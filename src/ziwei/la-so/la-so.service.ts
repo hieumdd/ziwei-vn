@@ -11,7 +11,11 @@ import {
 } from '../dia-chi/dia-chi.service';
 import { getLunarDay, getLunarHour, getLunarMonth, getLunarYear } from '../lunar-temporal/lunar-temporal.service';
 
-export const createLaSo = (gregorianDateString: string) => {
+type CreateLaSoOptions = {
+    gregorianDate: string;
+    hour: number;
+};
+export const createLaSo = ({ gregorianDate: gregorianDateString, hour }: CreateLaSoOptions) => {
     const gregorianDate = DateTime.fromISO(gregorianDateString);
     const lunarDateValues = (() => {
         const date = new CalendarChinese().fromDate(gregorianDate.toJSDate());
@@ -23,7 +27,7 @@ export const createLaSo = (gregorianDateString: string) => {
     const lunarYear = getLunarYear({ gregorianYear: gregorianDate.year });
     const lunarMonth = getLunarMonth({ lunarMonth: lunarDateValues.month, yearCan: lunarYear.can });
     const lunarDay = getLunarDay({ gregorianDate, lunarDay: lunarDateValues.day });
-    const lunarHour = getLunarHour({ gregorianHour: 21, dayCan: lunarDay.can });
+    const lunarHour = getLunarHour({ gregorianHour: hour, dayCan: lunarDay.can });
 
     const menh = getMenh({ can: lunarYear.can, chi: lunarYear.chi });
     const cuc = getCuc({ can: lunarYear.can, chi: lunarYear.chi });
