@@ -1,6 +1,6 @@
 import { Can } from './can.type';
-import { AmDuong } from '../am-duong.enum';
-import * as NguHanhs from '../ngu-hanh/ngu-hanh.enum';
+import { AmDuong } from '../am-duong.const';
+import * as NguHanhs from '../ngu-hanh/ngu-hanh.const';
 
 export const Giap: Can = {
     index: 0,

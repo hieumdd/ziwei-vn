@@ -1,5 +1,5 @@
 import { Chi } from './chi.type';
-import { AmDuong } from '../am-duong.enum';
+import { AmDuong } from '../am-duong.const';
 
 export const Ty: Chi = {
     index: 0,

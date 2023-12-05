@@ -4,7 +4,7 @@ import { Can } from '../can/can.type';
 import { CanTuple } from '../can/can.tuple';
 import { Chi } from '../chi/chi.type';
 import { ChiTuple } from '../chi/chi.tuple';
-import * as NguHanhs from '../ngu-hanh/ngu-hanh.enum';
+import * as NguHanhs from '../ngu-hanh/ngu-hanh.const';
 import { neutralize } from '../ziwei.utils';
 
 export const getMenh = ({ can, chi }: { can: Can; chi: Chi }) => {

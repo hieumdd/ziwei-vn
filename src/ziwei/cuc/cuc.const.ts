@@ -1,5 +1,5 @@
 import { Cuc } from './cuc.type';
-import * as NguHanhs from '../ngu-hanh/ngu-hanh.enum';
+import * as NguHanhs from '../ngu-hanh/ngu-hanh.const';
 
 export const ThuyNhiCuc: Cuc = {
     name: 'Thuỷ Nhị Cục',
