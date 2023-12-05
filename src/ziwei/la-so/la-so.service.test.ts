@@ -19,8 +19,8 @@ describe('createLaSo', () => {
         });
 
         it('lunar-day', () => {
-            expect(laSo.lunarMonth.can.name).toBe('Tân');
-            expect(laSo.lunarMonth.chi.name).toBe('Hợi');
+            expect(laSo.lunarDay.can.name).toBe('Tân');
+            expect(laSo.lunarDay.chi.name).toBe('Hợi');
         });
 
         it('menh/cuc', () => {

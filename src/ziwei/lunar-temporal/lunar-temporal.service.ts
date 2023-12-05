@@ -44,14 +44,12 @@ export const getLunarDay: GetLunarDay = ({ gregorianDate, lunarDay }) => {
         chi: Chis.Tuat,
     };
 
+    const daysDiff = gregorianDate.diff(base.gregorianDate, 'day').days;
+
     return {
         value: lunarDay,
-        can: rotate([...CanTuple], base.can.index)[
-            neutralize(gregorianDate.diff(base.gregorianDate, 'day').days, CanTuple.length)
-        ],
-        chi: rotate([...ChiTuple], base.chi.index)[
-            neutralize(gregorianDate.diff(base.gregorianDate, 'day').days, ChiTuple.length)
-        ],
+        can: rotate([...CanTuple], base.can.index)[neutralize(daysDiff, CanTuple.length)],
+        chi: rotate([...ChiTuple], base.chi.index)[neutralize(daysDiff, ChiTuple.length)],
     };
 };
 
