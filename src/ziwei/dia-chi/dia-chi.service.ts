@@ -2,6 +2,7 @@ import { Chi } from '../chi/chi.type';
 import * as Chis from '../chi/chi.const';
 import { ChiTuple } from '../chi/chi.tuple';
 import { Cuc } from '../cuc/cuc.type';
+import * as Cucs from '../cuc/cuc.const';
 import { Sao } from '../sao/sao.type';
 import * as SaoChinhTinhs from '../sao/chinh-tinh.const';
 import * as SaoPhuTinhs from '../sao/phu-tinh.const';
@@ -28,7 +29,80 @@ export const getMenhThanAssigner: GetDiaChiOptions = (options) => {
 type GetChinhTinhAssigners = (options: { cuc: Cuc; lunarDay: number }) => [Sao, Assigner][];
 
 export const getChinhTinhAssigners: GetChinhTinhAssigners = ({ cuc, lunarDay }) => {
-    const tuViIndex = cuc.tuViMapping.findIndex((values) => values.includes(lunarDay))!;
+    const tuViMapping = {
+        [Cucs.ThuyNhiCuc.name]: [
+            [22, 23],
+            [1, 25, 24],
+            [2, 3, 26, 27],
+            [4, 5, 28, 29],
+            [6, 7, 30],
+            [8, 9],
+            [10, 11],
+            [12, 13],
+            [14, 15],
+            [16, 17],
+            [18, 19],
+            [20, 21],
+        ],
+        [Cucs.MocTamCuc.name]: [
+            [25],
+            [2, 28],
+            [3, 5],
+            [6, 8],
+            [1, 9, 11],
+            [4, 12, 14],
+            [7, 15, 7],
+            [10, 18, 20],
+            [13, 21, 23],
+            [16, 24, 26],
+            [19, 27, 29],
+            [22, 30],
+        ],
+        [Cucs.KimTuCuc.name]: [
+            [5],
+            [3, 9],
+            [4, 7, 13],
+            [8, 11, 17],
+            [2, 12, 15, 21],
+            [6, 16, 19, 25],
+            [10, 20, 23, 29],
+            [14, 21, 27],
+            [18, 28],
+            [22],
+            [26],
+            [1, 30],
+        ],
+        [Cucs.ThoNguCuc.name]: [
+            [7],
+            [4, 12],
+            [5, 9, 17],
+            [10, 14, 22],
+            [3, 15, 19, 27],
+            [8, 20, 24],
+            [1, 13, 25, 29],
+            [6, 18, 30],
+            [11, 23],
+            [16, 28],
+            [21],
+            [2, 26],
+        ],
+        [Cucs.HoaLucCuc.name]: [
+            [9, 19],
+            [5, 15, 25],
+            [6, 11, 21],
+            [12, 17, 27],
+            [4, 18, 23],
+            [10, 24, 29],
+            [2, 16, 30],
+            [8, 22],
+            [14, 28],
+            [1, 20],
+            [7, 26],
+            [3, 13],
+        ],
+    }[cuc.name];
+    
+    const tuViIndex = tuViMapping.findIndex((values) => values.includes(lunarDay))!;
     const thienPhuIndex = neutralize(2 * Chis.Dan.index - tuViIndex, ChiTuple.length);
 
     return [
