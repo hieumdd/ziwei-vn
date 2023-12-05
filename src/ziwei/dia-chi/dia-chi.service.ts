@@ -1,11 +1,13 @@
+import { Can } from '../can/can.type';
 import { Chi } from '../chi/chi.type';
 import * as Chis from '../chi/chi.const';
 import { ChiTuple } from '../chi/chi.tuple';
 import { Cuc } from '../cuc/cuc.type';
 import * as Cucs from '../cuc/cuc.const';
+import { Gender } from '../gender.const';
 import { Sao } from '../sao/sao.type';
 import * as SaoChinhTinhs from '../sao/chinh-tinh.const';
-import * as SaoPhuTinhs from '../sao/phu-tinh.const';
+import * as SaoThaiTues from '../sao/phu-tinh/thai-tue.const';
 import { neutralize } from '../ziwei.utils';
 
 export const getBaseDiaChi = () => {
@@ -101,7 +103,7 @@ export const getChinhTinhAssigners: GetChinhTinhAssigners = ({ cuc, lunarDay }) 
             [3, 13],
         ],
     }[cuc.name];
-    
+
     const tuViIndex = tuViMapping.findIndex((values) => values.includes(lunarDay))!;
     const thienPhuIndex = neutralize(2 * Chis.Dan.index - tuViIndex, ChiTuple.length);
 
@@ -128,17 +130,17 @@ type GetThaiTueAssigners = (options: { chi: Chi }) => [Sao, Assigner][];
 
 export const getThaiTueAssigners: GetThaiTueAssigners = ({ chi: { index: thaiTueIndex } }) => {
     return [
-        [SaoPhuTinhs.ThaiTue, (i) => i === neutralize(thaiTueIndex, ChiTuple.length)],
-        [SaoPhuTinhs.ThieuDuong, (i) => i === neutralize(thaiTueIndex + 1, ChiTuple.length)],
-        [SaoPhuTinhs.TangMon, (i) => i === neutralize(thaiTueIndex + 2, ChiTuple.length)],
-        [SaoPhuTinhs.ThieuAm, (i) => i === neutralize(thaiTueIndex + 3, ChiTuple.length)],
-        [SaoPhuTinhs.QuanPhu, (i) => i === neutralize(thaiTueIndex + 4, ChiTuple.length)],
-        [SaoPhuTinhs.TuPhu, (i) => i === neutralize(thaiTueIndex + 5, ChiTuple.length)],
-        [SaoPhuTinhs.TuePha, (i) => i === neutralize(thaiTueIndex + 6, ChiTuple.length)],
-        [SaoPhuTinhs.LongDuc, (i) => i === neutralize(thaiTueIndex + 7, ChiTuple.length)],
-        [SaoPhuTinhs.BachHo, (i) => i === neutralize(thaiTueIndex + 8, ChiTuple.length)],
-        [SaoPhuTinhs.PhucDuc, (i) => i === neutralize(thaiTueIndex + 9, ChiTuple.length)],
-        [SaoPhuTinhs.DieuKhach, (i) => i === neutralize(thaiTueIndex + 10, ChiTuple.length)],
-        [SaoPhuTinhs.TrucPhu, (i) => i === neutralize(thaiTueIndex + 11, ChiTuple.length)],
+        [SaoThaiTues.ThaiTue, (i) => i === neutralize(thaiTueIndex, ChiTuple.length)],
+        [SaoThaiTues.ThieuDuong, (i) => i === neutralize(thaiTueIndex + 1, ChiTuple.length)],
+        [SaoThaiTues.TangMon, (i) => i === neutralize(thaiTueIndex + 2, ChiTuple.length)],
+        [SaoThaiTues.ThieuAm, (i) => i === neutralize(thaiTueIndex + 3, ChiTuple.length)],
+        [SaoThaiTues.QuanPhuf, (i) => i === neutralize(thaiTueIndex + 4, ChiTuple.length)],
+        [SaoThaiTues.TuPhu, (i) => i === neutralize(thaiTueIndex + 5, ChiTuple.length)],
+        [SaoThaiTues.TuePha, (i) => i === neutralize(thaiTueIndex + 6, ChiTuple.length)],
+        [SaoThaiTues.LongDuc, (i) => i === neutralize(thaiTueIndex + 7, ChiTuple.length)],
+        [SaoThaiTues.BachHo, (i) => i === neutralize(thaiTueIndex + 8, ChiTuple.length)],
+        [SaoThaiTues.PhucDuc, (i) => i === neutralize(thaiTueIndex + 9, ChiTuple.length)],
+        [SaoThaiTues.DieuKhach, (i) => i === neutralize(thaiTueIndex + 10, ChiTuple.length)],
+        [SaoThaiTues.TrucPhu, (i) => i === neutralize(thaiTueIndex + 11, ChiTuple.length)],
     ];
 };

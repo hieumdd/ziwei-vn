@@ -1,4 +1,4 @@
-import { Sao } from './sao.type';
+import { Sao } from '../sao.type';
 
 export const ThaiTue: Sao = {
     name: 'Thái Tuế',
@@ -16,7 +16,7 @@ export const ThieuAm: Sao = {
     name: 'Thiếu Âm',
 };
 
-export const QuanPhu: Sao = {
+export const QuanPhuf: Sao = {
     name: 'Quan Phù',
 };
 
