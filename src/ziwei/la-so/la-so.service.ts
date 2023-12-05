@@ -5,7 +5,8 @@ import { getYearCan } from '../can/can.service';
 import { getYearChi } from '../chi/chi.service';
 import { getMenh } from '../menh/menh.service';
 import { getCuc } from '../cuc/cuc.service';
-import { getBaseDiaChi, getMenhThanPredicate } from '../dia-chi/dia-chi.service';
+import { Sao } from '../sao/sao.type';
+import { getBaseDiaChi, getChinhTinhAssigners, getMenhThanPredicate } from '../dia-chi/dia-chi.service';
 
 const getLunarDate = (datetime: DateTime) => {
     const lunarDate = new CalendarChinese().fromDate(datetime.toJSDate());
@@ -27,8 +28,14 @@ export const createLaSo = (gregorianDateString: string) => {
 
     const diaChi = (() => {
         const { isMenh, isThan } = getMenhThanPredicate({ lunarMonth: lunarDate.month, lunarHour: 12 });
+        const chinhTinhAssigners = getChinhTinhAssigners({ cuc, lunarDay: lunarDate.day });
 
-        return getBaseDiaChi().map((cung, i) => ({ ...cung, isMenh: isMenh(i), isThan: isThan(i) }));
+        return getBaseDiaChi()
+            .map((cung, i) => ({ ...cung, isMenh: isMenh(i), isThan: isThan(i) }))
+            .map((cung, i) => ({
+                ...cung,
+                chinhTinh: chinhTinhAssigners.filter(([_, assigner]) => assigner(i)).map(([sao]) => sao),
+            }));
     })();
 
     return {
