@@ -1,4 +1,4 @@
-import { AmDuong } from '../am-duong.const';
+import { AmDuong } from '../am-duong/am-duong.type';
 import { NguHanh } from '../ngu-hanh/ngu-hanh.type';
 
 export type Can = {

@@ -1,4 +1,4 @@
-import { AmDuong } from '../am-duong.const';
+import { AmDuong } from '../am-duong/am-duong.type';
 
 export type Chi = {
     index: number;

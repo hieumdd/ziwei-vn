@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { CalendarChinese } from 'date-chinese';
 
-import { Gender } from '../gender.const';
+import { Gender } from '../gender/gender.type';
 import { getMenh } from '../menh/menh.service';
 import { getCuc } from '../cuc/cuc.service';
 import {
