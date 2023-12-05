@@ -12,16 +12,14 @@ import {
     getThaiTueAssigners,
 } from '../dia-chi/dia-chi.service';
 
-const getLunarDate = (datetime: DateTime) => {
-    const lunarDate = new CalendarChinese().fromDate(datetime.toJSDate());
-    const [_, year, month, __, day] = lunarDate.get();
-
-    return { date: lunarDate, year, month, day };
-};
-
 export const createLaSo = (gregorianDateString: string) => {
     const gregorianDate = DateTime.fromISO(gregorianDateString);
-    const lunarDate = getLunarDate(gregorianDate);
+    const lunarDate = (() => {
+        const date = new CalendarChinese().fromDate(gregorianDate.toJSDate());
+        const [_, year, month, __, day] = date.get();
+
+        return { date: date, year, month, day };
+    })();
 
     const lunarYear = {
         can: getYearCan(gregorianDate.year),
