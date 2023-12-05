@@ -14,6 +14,7 @@ import { neutralize } from '../ziwei.utils';
 type GetLunarYear = (options: { gregorianYear: number }) => LunarTemporal;
 
 export const getLunarYear: GetLunarYear = ({ gregorianYear }) => ({
+    value: gregorianYear,
     can: rotate([...CanTuple], -4)[neutralize(gregorianYear, CanTuple.length)],
     chi: rotate([...ChiTuple], -4)[neutralize(gregorianYear, ChiTuple.length)],
 });
@@ -28,14 +29,15 @@ export const getLunarMonth: GetLunarMonth = ({ lunarMonth, yearCan }) => {
         .value() as [number, Can];
 
     return {
+        value: lunarMonth,
         can: rotate([...CanTuple], canRotation)[neutralize(lunarMonth - 1, CanTuple.length)],
         chi: rotate([...ChiTuple], 2)[neutralize(lunarMonth - 1, ChiTuple.length)],
     };
 };
 
-type GetLunarDay = (options: { gregorianDate: DateTime }) => LunarTemporal;
+type GetLunarDay = (options: { gregorianDate: DateTime; lunarDay: number }) => LunarTemporal;
 
-export const getLunarDay: GetLunarDay = ({ gregorianDate }) => {
+export const getLunarDay: GetLunarDay = ({ gregorianDate, lunarDay }) => {
     const base = {
         gregorianDate: DateTime.fromISO('1900-01-01'),
         can: Cans.Giap,
@@ -43,6 +45,7 @@ export const getLunarDay: GetLunarDay = ({ gregorianDate }) => {
     };
 
     return {
+        value: lunarDay,
         can: rotate([...CanTuple], base.can.index)[
             neutralize(gregorianDate.diff(base.gregorianDate, 'day').days, CanTuple.length)
         ],
@@ -63,6 +66,7 @@ export const getLunarHour: GetLunarHour = ({ gregorianHour, dayCan }) => {
     ).find(([_, [start, end]]) => gregorianHour >= start && gregorianHour < end)!;
 
     return {
+        value: gregorianHour,
         can: rotate([...CanTuple], -2)[neutralize(dayCan.index, CanTuple.length)],
         chi,
     };
