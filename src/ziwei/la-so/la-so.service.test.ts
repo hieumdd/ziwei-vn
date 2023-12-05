@@ -52,6 +52,12 @@ describe('createLaSo', () => {
                 expect(laSo.diaChi[0].phuTinh).toContainEqual({ name: 'Điếu Khách' });
                 expect(laSo.diaChi[2].phuTinh).toContainEqual({ name: 'Thái Tuế' });
             });
+
+            it('loc-ton', () => {
+                expect(laSo.diaChi[5].phuTinh).toContainEqual({ name: 'Lộc Tồn' });
+                expect(laSo.diaChi[5].phuTinh).toContainEqual({ name: 'Bác Sỹ' });
+                expect(laSo.diaChi[9].phuTinh).toContainEqual({ name: 'Tướng Quân' });
+            });
         });
     });
 });

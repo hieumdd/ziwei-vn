@@ -1,13 +1,15 @@
 import { Can } from '../can/can.type';
+import * as Cans from '../can/can.const';
 import { Chi } from '../chi/chi.type';
 import * as Chis from '../chi/chi.const';
 import { ChiTuple } from '../chi/chi.tuple';
 import { Cuc } from '../cuc/cuc.type';
 import * as Cucs from '../cuc/cuc.const';
-import { Gender } from '../gender.const';
+import { Gender } from '../gender/gender.type';
 import { Sao } from '../sao/sao.type';
 import * as SaoChinhTinhs from '../sao/chinh-tinh.const';
 import * as SaoThaiTues from '../sao/phu-tinh/thai-tue.const';
+import * as SaoLocTons from '../sao/phu-tinh/loc-ton.const';
 import { neutralize } from '../ziwei.utils';
 
 export const getBaseDiaChi = () => {
@@ -142,5 +144,49 @@ export const getThaiTueAssigners: GetThaiTueAssigners = ({ chi: { index: thaiTue
         [SaoThaiTues.PhucDuc, (i) => i === neutralize(thaiTueIndex + 9, ChiTuple.length)],
         [SaoThaiTues.DieuKhach, (i) => i === neutralize(thaiTueIndex + 10, ChiTuple.length)],
         [SaoThaiTues.TrucPhu, (i) => i === neutralize(thaiTueIndex + 11, ChiTuple.length)],
+    ];
+};
+
+type GetLocTonAssigners = (options: { can: Can; gender: Gender }) => [Sao, Assigner][];
+
+export const getLocTonAssigners: GetLocTonAssigners = ({ can, gender }) => {
+    let locTonIndex = 0;
+
+    const canPredicate = (cans: Can[]) => cans.map(({ index }) => index).includes(can.index);
+
+    if (canPredicate([Cans.Giap])) {
+        locTonIndex = Chis.Dan.index;
+    } else if (canPredicate([Cans.At])) {
+        locTonIndex = Chis.Mao.index;
+    } else if (canPredicate([Cans.Binh, Cans.Mau])) {
+        locTonIndex = Chis.Ti.index;
+    } else if (canPredicate([Cans.Dinh, Cans.Ky])) {
+        locTonIndex = Chis.Ngo.index;
+    } else if (canPredicate([Cans.Canh])) {
+        locTonIndex = Chis.Than.index;
+    } else if (canPredicate([Cans.Tan])) {
+        locTonIndex = Chis.Dau.index;
+    } else if (canPredicate([Cans.Nham])) {
+        locTonIndex = Chis.Hoi.index;
+    } else if (canPredicate([Cans.Quy])) {
+        locTonIndex = Chis.Ty.index;
+    }
+
+    const locTonCoefficient = can.amDuong.value * gender.value;
+
+    return [
+        [SaoLocTons.LocTon, (i) => i === neutralize(locTonIndex + locTonCoefficient * 0, ChiTuple.length)],
+        [SaoLocTons.BacSy, (i) => i === neutralize(locTonIndex + locTonCoefficient * 0, ChiTuple.length)],
+        [SaoLocTons.LucSy, (i) => i === neutralize(locTonIndex + locTonCoefficient * 1, ChiTuple.length)],
+        [SaoLocTons.ThanhLong, (i) => i === neutralize(locTonIndex + locTonCoefficient * 2, ChiTuple.length)],
+        [SaoLocTons.TieuHao, (i) => i === neutralize(locTonIndex + locTonCoefficient * 3, ChiTuple.length)],
+        [SaoLocTons.TuongQuan, (i) => i === neutralize(locTonIndex + locTonCoefficient * 4, ChiTuple.length)],
+        [SaoLocTons.TauThu, (i) => i === neutralize(locTonIndex + locTonCoefficient * 5, ChiTuple.length)],
+        [SaoLocTons.PhiLiem, (i) => i === neutralize(locTonIndex + locTonCoefficient * 6, ChiTuple.length)],
+        [SaoLocTons.HyThan, (i) => i === neutralize(locTonIndex + locTonCoefficient * 7, ChiTuple.length)],
+        [SaoLocTons.BenhPhu, (i) => i === neutralize(locTonIndex + locTonCoefficient * 8, ChiTuple.length)],
+        [SaoLocTons.DaiHao, (i) => i === neutralize(locTonIndex + locTonCoefficient * 9, ChiTuple.length)],
+        [SaoLocTons.PhucBinh, (i) => i === neutralize(locTonIndex + locTonCoefficient * 10, ChiTuple.length)],
+        [SaoLocTons.QuanPhu, (i) => i === neutralize(locTonIndex + locTonCoefficient * 11, ChiTuple.length)],
     ];
 };
